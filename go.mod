@@ -1,1 +1,1 @@
-module "zone-7/andflow_plugin"
+module "github.com/zone-7/andflow_plugin"
