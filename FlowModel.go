@@ -1,4 +1,4 @@
-package andflow
+package andflow_plugin
 
 import (
 	"context"
