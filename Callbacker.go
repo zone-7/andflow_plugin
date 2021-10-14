@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
+	"path"
 	"time"
 )
 
@@ -83,6 +84,11 @@ func (i *InitCallbackerImpl)GetFlowPluginPath() string{
 	return ""
 }
 
+func (i *InitCallbackerImpl)GetFlowActionPath(name string) string{
+	dir := path.Join(i.GetFlowPluginPath(), name)
+
+	return dir
+}
 
 type ActionCallbackerImpl struct {
 	RuntimeId string
