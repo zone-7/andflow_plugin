@@ -142,6 +142,8 @@ type CallbackResponse struct{
 }
 type InitCallbacker interface {
 	GetFlowPluginPath() string
+	GetFlowActionPath(name string) string
+
 }
 
 type ActionCallbacker interface {
