@@ -25,8 +25,7 @@ type MetadataPropertiesModel struct {
 	Attrs       MetadataAttrsModel    `bson:"attrs" json:"attrs"`     //标签属性
 	Options     []MetadataOptionModel `bson:"options" json:"options"`
 	OptionMode  string				  `bson:"option_mode" json:"option_mode"` //单选single、多选multipy
-	OptionsLoader func(userid int ,m *MetadataModel, p *MetadataPropertiesModel)		  	  `bson:"-" json:"-"`
-	OptionsLoaderParams []string  `bson:"-" json:"-"`
+
 }
 
 type MetadataModel struct {
@@ -109,7 +108,7 @@ type FlowModel struct {
 type Action interface {
 	GetName() string
 	Init(callback interface{})
-	PrepareMetadata(flowCode string, metadata string) string
+	PrepareMetadata(userid int,flowCode string, metadata string) string
 	Filter(ctx context.Context,runtimeId string,preActionId string,actionId string, callback interface{}) (bool, error)
 	Exec(ctx context.Context,runtimeId string,preActionId string,actionId string, callback interface{}) (interface{}, error)
 }
