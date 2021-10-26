@@ -33,7 +33,7 @@ type MetadataModel struct {
 	Title    string                    `bson:"title" json:"title"`        //标题
 	Des      string                    `bson:"des" json:"des"`            //描述
 	Group    string                    `bson:"group" json:"group"`		   //组
-	Template string                    `bson:"template" json:"template"`  //模板
+	Tag string                    		`bson:"tag" json:"tag"`  //模板
 	Css      string                    `bson:"css" json:"css"`            //样式
 	Icon     string                    `bson:"icon" json:"icon"`          //图标
 
