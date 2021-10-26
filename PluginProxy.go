@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func InitPlugin(d Action) error{
@@ -52,7 +53,30 @@ func InitPlugin(d Action) error{
 		res = append(res, r)
 	case "PrepareMetadata":
 		if len(params)>=3{
-			r:=d.PrepareMetadata(params[0].(int),params[1].(string),params[2].(string))
+			var userid int
+			switch params[0].(type) {
+			case string:
+				userid, _ = strconv.Atoi(params[0].(string))
+				break
+			case int, int8, int32, int64:
+				value := fmt.Sprintf("%d", params[0])
+				userid, _ = strconv.Atoi(value)
+
+				break
+			case uint, uint8, uint32, uint64:
+				value := fmt.Sprintf("%d", params[0])
+				userid, _ = strconv.Atoi(value)
+
+				break
+			case float32, float64:
+
+				value := fmt.Sprintf("%.f", params[0])
+				userid, _ = strconv.Atoi(value)
+
+				break
+			}
+
+			r:=d.PrepareMetadata(userid,params[1].(string),params[2].(string))
 			res= append(res, r)
 		}else{
 			panic("参数错误")
